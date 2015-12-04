@@ -1,0 +1,26 @@
+{
+  "name": "virtual-attach",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Attach a virtual dom element to the DOM and sync changes",
+  "license": "MIT",
+  "repository": "ajoslin/virtual-attach",
+  "author": {
+    "name": "Andrew Joslin",
+    "email": "andrewtjoslin@gmail.com",
+    "url": "ajoslin.com"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "virtual dom attach"
+  ],
+  "devDependencies": {
+    "tape": "^4.0.0",
+    "standard": "^4.0.0"
+  },
+  "files": [
+    "index.js"
+  ]
+}
