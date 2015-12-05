@@ -27,18 +27,16 @@ Component.render = function render (state) {
   return h('div', state.foo)
 }
 
-var data = attach(Component(), Component.render)
-
-data.element; // dom element that will be updated when state changes
-data.unlisten; // call to remove listener for state changes
-
+// dom element whose contents match the vtree returned from component.render,
+// which will be updated when state changes
+var element = attach(Component(), Component.render)
 ```
 
 ## API
 
-#### `var data = attach(state, render)`
+#### `var element = attach(state, render)`
 
-Returns a `data` object, containing `data.element`, a DOM element, and `data.unlisten`, an unlisten function.
+Returns a DOM element matching the vtree returned from `render` when called with `state`.
 
 ##### state
 
@@ -47,6 +45,10 @@ An observable state
 ##### render
 
 A render function that takes in a state object and returns a virtual DOM tree. Render will be called with the observable state whenever the state changes.
+
+#### `attach.unlisten(element)`
+
+When called with an element returned from `attach`, will stop listening for changes to `state`.
 
 ## License
 
