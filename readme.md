@@ -13,32 +13,35 @@ $ npm install --save virtual-attach
 ## Usage
 
 ```js
-var virtualAttach = require('virtual-attach')
+var attach = require('virtual-attach')
+var Struct = require('observ-struct')
+var h = require('virtual-dom/h')
 
-virtualAttach('input')
-//=> output
+function Component () {
+  return Struct({
+    foo: 'bar'
+  })
+}
+
+Component.render = function render (state) {
+  return h('div', state.foo)
+}
+
+attach(Component, document.body)
+// Component will be attached and updated whenever its state changes
 ```
 
 ## API
 
-#### `virtualAttach(input, [options])` -> `output`
+#### `attach(Component, element)`
 
-##### input
+##### Component
 
-*Required*  
-Type: `string`
+A virtual DOM component constructor
 
-Lorem ipsum.
+##### element
 
-##### options
-
-###### foo
-
-Type: `boolean`  
-Default: `false`
-
-Lorem ipsum.
-
+A DOM element to attach the component to
 
 ## License
 
