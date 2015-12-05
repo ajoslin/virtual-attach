@@ -1,7 +1,7 @@
 {
   "name": "virtual-attach",
   "main": "index.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Attach a virtual dom element to the DOM and sync changes",
   "license": "MIT",
   "repository": "ajoslin/virtual-attach",
