@@ -27,21 +27,26 @@ Component.render = function render (state) {
   return h('div', state.foo)
 }
 
-attach(Component, document.body)
-// Component will be attached and updated whenever its state changes
+var data = attach(Component(), Component.render)
+
+data.element; // dom element that will be updated when state changes
+data.unlisten; // call to remove listener for state changes
+
 ```
 
 ## API
 
-#### `attach(Component, element)`
+#### `var data = attach(state, render)`
 
-##### Component
+Returns a `data` object, containing `data.element`, a DOM element, and `data.unlisten`, an unlisten function.
 
-A virtual DOM component constructor
+##### state
 
-##### element
+An observable state
 
-A DOM element to attach the component to
+##### render
+
+A render function that takes in a state object and returns a virtual DOM tree. Render will be called with the observable state whenever the state changes.
 
 ## License
 
