@@ -23,7 +23,6 @@ function attach (state, render) {
     var tree = render(state)
     var patches = diff(vtree, tree)
     patch(element, patches)
-    console.log(element.className)
     vtree = tree
   }
 }
