@@ -30,7 +30,6 @@
   "dependencies": {
     "frame-debounce": "^1.0.1",
     "observ": "^0.2.0",
-    "virtual-dom": "^2.1.1",
-    "weakmap-shim": "^1.1.0"
+    "virtual-dom": "^2.1.1"
   }
 }

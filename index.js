@@ -4,9 +4,8 @@ var createElement = require('virtual-dom/create-element')
 var diff = require('virtual-dom/diff')
 var patch = require('virtual-dom/patch')
 var debounce = require('frame-debounce')
-var createStore = require('weakmap-shim/create-store')
 
-var Elements = createStore()
+var UNLISTEN_KEY = '__virtual-attach-unlisten'
 
 module.exports = attach
 
@@ -15,7 +14,7 @@ function attach (state, render) {
   var element = createElement(vtree)
   var unlisten = state(debounce(rerender))
 
-  Elements(element).unlisten = unlisten
+  element[UNLISTEN_KEY] = unlisten
 
   return element
 
@@ -28,9 +27,9 @@ function attach (state, render) {
 }
 
 attach.unlisten = function unlisten (element) {
-  var store = Elements(element)
-  if (store && store.unlisten) {
-    store.unlisten()
-    delete store.unlisten
+  var fn = element && element[UNLISTEN_KEY]
+  if (typeof fn === 'function') {
+    fn()
+    delete element[UNLISTEN_KEY]
   }
 }
